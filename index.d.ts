@@ -1,8 +1,8 @@
 import * as React from "react";
 
-type ButtonTheme = "dark_short" | "light_short" | "dark" | "light";
+export type CrowdinLoginButtonTheme = "dark_short" | "light_short" | "dark" | "light";
 
-export interface CrowdinLoginProps extends React.Props<CrowdinLogin> {
+interface CrowdinLoginProps extends React.Props<CrowdinLogin> {
   /**
    * Application (client) ID
    */
@@ -31,7 +31,7 @@ export interface CrowdinLoginProps extends React.Props<CrowdinLogin> {
   /**
    * Name of theme for button style.
    */
-  buttonTheme?: ButtonTheme;
+  buttonTheme?: CrowdinLoginButtonTheme;
 
   /**
    * Enable detailed logs of authorization process.
@@ -44,23 +44,16 @@ export interface CrowdinLoginProps extends React.Props<CrowdinLogin> {
   className?: string;
 }
 
-export interface CrowdinLoginButtonProps
-  extends React.Props<CrowdinLoginButton> {
-  buttonTheme: ButtonTheme;
-  buttonClassName?: string;
-  onClick?: any;
+
+interface CrowdinLoginState {
+  scopes: string;
 }
 
 declare class CrowdinLogin extends React.Component<
   CrowdinLoginProps,
-  any
-> {}
-declare class CrowdinLoginButton extends React.Component<
-  CrowdinLoginButtonProps,
-  any
+  CrowdinLoginState
 > {}
 
 declare module "crowdin-login" {}
-declare module "crowdin-login-button" {}
 
 export default CrowdinLogin;

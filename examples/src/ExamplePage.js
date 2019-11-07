@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Header, Label, Icon, Segment, Input, Select, Radio, Form, Button } from 'semantic-ui-react';
+import { Container, Header, Label, Icon, Segment, Select, Radio, Form } from 'semantic-ui-react';
 
 import config from "./config";
 import CrowdinLogin from "../../dist";
@@ -122,16 +122,13 @@ export default class ExaplePage extends React.Component {
             </Segment>
             <Segment>
               <CrowdinLogin
-                withUserData={withUserData}
                 debug={debug}
                 clientId={clientId}
-                forceRedirectStrategy={forceRedirectStrategy}
                 authCallback={this.loginHandler}
                 buttonTheme={buttonTheme}
                 className="my-custom-class"
-                graphScopes={config.graphScopes}
-                children={customButton && <Button>Custom button</Button>}
-              />
+                scopes={config.graphScopes}
+							/>
             </Segment>
           </Container>
         </Segment>

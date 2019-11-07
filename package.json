@@ -2,7 +2,7 @@
   "name": "react-crowdin-login",
   "description": "React component for simple OAuth with Crowdin services on client side",
   "main": "dist/index.js",
-  "version": "1.6.2",
+  "version": "0.0.1",
   "author": "alexandrtovmach@gmail.com",
   "private": false,
   "scripts": {
@@ -11,7 +11,6 @@
     "build": "rm -rf ./dist && tsc && webpack",
     "prepare": "lint-staged && yarn build",
     "deploy": "yarn prepare && gh-pages -d examples/dist",
-    "precommit": "lint-staged",
     "prettify": "prettier --write './src/**/*.{js,jsx,ts,tsx,json,css,md}'"
   },
   "devDependencies": {
@@ -60,5 +59,10 @@
     "auth",
     "oauth"
   ],
-  "license": "ISC"
+  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
 }

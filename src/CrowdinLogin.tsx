@@ -1,17 +1,9 @@
 import * as React from "react";
 
-import { CrowdinLoginProps } from "../index";
+import CrowdinLoginTypes from "../index";
 import CrowdinLoginButton from "./CrowdinLoginButton";
 
-
-interface CrowdinLoginState {
-  scopes: string;
-}
-
-export default class CrowdinLogin extends React.Component<
-  CrowdinLoginProps,
-  CrowdinLoginState
-> {
+export default class CrowdinLogin extends CrowdinLoginTypes {
   render() {
     const { buttonTheme, className, children } = this.props;
     return children ? (
