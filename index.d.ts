@@ -1,8 +1,8 @@
 import * as React from "react";
 
-export type CrowdinLoginButtonTheme = "dark_short" | "light_short" | "dark" | "light";
+type CrowdinLoginButtonTheme = "dark_short" | "light_short" | "dark" | "light";
 
-interface CrowdinLoginProps extends React.Props<CrowdinLogin> {
+interface CrowdinLoginProps {
   /**
    * Application (client) ID
    */
@@ -48,12 +48,3 @@ interface CrowdinLoginProps extends React.Props<CrowdinLogin> {
 interface CrowdinLoginState {
   scopes: string;
 }
-
-declare class CrowdinLogin extends React.Component<
-  CrowdinLoginProps,
-  CrowdinLoginState
-> {}
-
-declare module "crowdin-login" {}
-
-export default CrowdinLogin;
