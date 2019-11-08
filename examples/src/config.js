@@ -1,6 +1,6 @@
 export default {
-  client_id: "rC4NvIV3Q8xotvxlEcUJ",
-  graphScopes: ["user.read"],
+  clientId: "rC4NvIV3Q8xotvxlEcUJ",
+	scope: '"tm"',
   themeOptions: [
     {
       key: 'dark',

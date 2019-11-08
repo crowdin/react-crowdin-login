@@ -72,6 +72,9 @@ const CrowdinLoginButton: React.SFC<CrowdinLoginButtonProps> = ({
         width="212"
         height="40"
         fill={isDark ? "#2E3340" : "#ffffff"}
+        style={styleObj}
+        className={buttonClassName}
+        onClick={onClick}
       >
         <rect
           width="211"

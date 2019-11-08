@@ -13,6 +13,12 @@ export default class CrowdinLoginComponent extends React.Component<
     openModal: false
   };
 
+  buildURL = () => {
+    const { clientId, redirectUri, scope, domain } = this.props;
+    const uri = encodeURIComponent(redirectUri || window.location.href);
+    return `https://accounts.crowdin.com/oauth/authorize/?client_id=${clientId}&redirect_uri=${uri}&response_type=token&scope=${scope}&domain=${domain}`;
+  };
+
   handleLoginClick = () => {
     // window.open("https://accounts.crowdin.com/oauth/authorize", "Popup","toolbar=no, location=no, statusbar=no, menubar=no, scrollbars=1, resizable=0, width=580, height=600, top=30")
     this.setState({
@@ -39,7 +45,7 @@ export default class CrowdinLoginComponent extends React.Component<
         {button}
         {openModal && (
           <Popout
-            url="https://accounts.crowdin.com/oauth/authorize"
+            url={this.buildURL()}
             title="Sign in to CrowdIn"
             onClosing={console.log}
             options={{ height: "470px" }}
