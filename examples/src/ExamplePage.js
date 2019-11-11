@@ -10,6 +10,7 @@ export default class ExaplePage extends React.Component {
     
     this.state = {
       clientId: config.clientId,
+      clientSecret: config.clientSecret,
       redirectUri: config.redirectUri,
       buttonTheme: "light",
       withUserData: true,
@@ -34,7 +35,7 @@ export default class ExaplePage extends React.Component {
   };
 
   render() {
-    const { clientId, buttonTheme, debug } = this.state;
+    const { clientId, clientSecret, buttonTheme, debug } = this.state;
     return (
       <div className="viewport">
         <Segment basic>
@@ -60,6 +61,14 @@ export default class ExaplePage extends React.Component {
                     onChange={e => this.handleChange(e.target.value, "clientId")}
                     placeholder='f8c7976f-3e93-482d-88a3-62a1133cbbc3'
                     value={clientId}
+                  />
+                </Form.Field>
+                <Form.Field>
+                  <label>Client Secret</label>
+                  <input
+                    onChange={e => this.handleChange(e.target.value, "clientId")}
+                    placeholder='0I1pqXeyfDVy4qyNnIhpTg4G3IoUnIdY3iANsx6k'
+                    value={clientSecret}
                   />
                 </Form.Field>
                 <Form.Field>
@@ -115,6 +124,7 @@ export default class ExaplePage extends React.Component {
               <CrowdinLogin
                 // debug={debug}
                 clientId={clientId}
+                clientSecret={clientSecret}
                 domain={'alexandrtovmach'}
                 authCallback={this.loginHandler}
                 buttonTheme={buttonTheme}

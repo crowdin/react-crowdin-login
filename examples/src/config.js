@@ -1,5 +1,6 @@
 export default {
   clientId: "rC4NvIV3Q8xotvxlEcUJ",
+  clientSecret: "0I1pqXeyfDVy4qyNnIhpTg4G3IoUnIdY3iANsx6k",
 	scope: 'tm',
   themeOptions: [
     {
