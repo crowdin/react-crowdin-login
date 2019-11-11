@@ -16,7 +16,7 @@ export default class CrowdinLoginComponent extends React.Component<
   buildURL = () => {
     const { clientId, redirectUri, scope, domain } = this.props;
     const uri = encodeURIComponent(redirectUri || window.location.href);
-    return `https://accounts.crowdin.com/oauth/authorize/?client_id=${clientId}&redirect_uri=${uri}&response_type=token&scope=${scope}&domain=${domain}`;
+    return `https://accounts.crowdin.com/oauth/authorize/?client_id=${clientId}&redirect_uri=${uri}&response_type=code&scope=${scope}&domain=${domain}`;
   };
 
   handleLoginClick = () => {

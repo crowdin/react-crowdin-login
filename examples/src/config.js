@@ -1,6 +1,6 @@
 export default {
   clientId: "rC4NvIV3Q8xotvxlEcUJ",
-	scope: '"tm"',
+	scope: 'tm',
   themeOptions: [
     {
       key: 'dark',
