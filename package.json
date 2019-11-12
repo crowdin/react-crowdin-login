@@ -1,8 +1,8 @@
 {
-  "name": "react-crowdin-login",
-  "description": "React component for simple OAuth with Crowdin services on client side",
+  "name": "@crowdin/react-crowdin-login",
+  "description": "React component for simple OAuth with Crowdin",
   "main": "dist/index.js",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "alexandrtovmach@gmail.com",
   "private": false,
   "scripts": {
@@ -59,7 +59,7 @@
     "auth",
     "oauth"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
