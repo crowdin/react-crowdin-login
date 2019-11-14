@@ -4,6 +4,13 @@
 
 React component for a simple OAuth login with Crowdin
 
+![light border lowerc short](images/light_border_lowerc_short.svg)
+![light border lowerc](images/light_border_lowerc.svg)
+![dark border lowerc short](images/dark_border_lowerc_short.svg)
+![dark border lowerc](images/dark_border_lowerc.svg)
+
+For more about our Login Branding please visit the [page](https://github.com/crowdin/react-crowdin-login/wiki/Login-Branding-Guidelines) on Wiki.
+
 ### Get Started 
 
 Follow these steps to start using React Crowdin Login:
@@ -13,51 +20,8 @@ Follow these steps to start using React Crowdin Login:
 2. Import and configure component.
 
 ```
-
+TBA
 ```
-
----
-
-### Login Branding Guidelines
-
-Use the following standard buttons in your mobile or web app to enable *Crowdin Login*:
-
-|           | Default                                               | Short                                                                       |
-| --------- | ----------------------------------------------------- | --------------------------------------------------------------------------- |
-| **Dark**  | ![dark border lowerc](images/dark_border_lowerc.svg)  | ![dark border lowerc short](images/dark_border_lowerc_short.svg)  |
-| **Light** | ![light border lowerc](images/light_border_lowerc.svg) | ![light border lowerc short](images/light_border_lowerc_short.svg) |
-
-You can [download buttons package](https://raw.github.com/crowdin/react-crowdin-login/master/images/buttons.zip) with buttons in PNG and SVG formats.
-
-### Crowdin Login and other third-party login options
-
-The **Crowdin Login** button must be displayed as prominently as other third-party login options. Buttons should have approximately the same size and similar visual weight.
-
-### Matching your own app's style
-It’s recommended to use the standard **Crowdin Login** button as it allows Crowdin users to identify the Crowdin option quickly. In case you need to adapt the button to match your app design or translate the text *Log in with* or *Log in*, follow the below guidelines.
-
-#### Size
-You can scale the button for different devices and screen sizes preserving the aspect ratio so that the Crowdin logo is not stretched.
-
-#### Text
-We recommend using the call-to-action text like *Log in with Crowdin* or *Sign up with Crowdin* to encourage users to click the button. It also should be clear to the users that they are logging in to or signing up for your app with their Crowdin credentials, and not signing up for Crowdin account using your app.
-
-#### Crowdin Text
-You can use the word *Crowdin* by itself in the button if it has the adjacent text that specifies what the action does.
-
-#### Color
-The color for an unpressed light button is `#FFFFFF` (white). The color for an unpressed dark (gray) button is `#2E3340`. The button background can be either gray or white, but the button must always include the contrast Crowdin logo.
-
-#### Font
-The button font is [Noto Sans KR](https://fonts.google.com/specimen/Noto+Sans+KR) and it’s recommended to be used for all texts on the button.
-
-#### Padding
-The padding to the left (and right) of the text should be 8dp. The logo should be 18dp, and there should be 24dp between the logo and the button text.
-
-#### Crowdin logo on the login button
-Regardless of the text, you can't change the size or color of the Crowdin logo. It must be the standard color version and contrast to the background with `#FFFFFF` or `#2E3340` colors.
-
----
 
 ### Contribution
 We are happy to accept contributions to the React Crowdin Login. To contribute please do the following:
