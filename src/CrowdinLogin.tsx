@@ -85,7 +85,7 @@ export default class CrowdinLoginComponent extends React.Component<
   };
 
   render() {
-    const { buttonTheme, className, children } = this.props;
+    const { buttonTheme, className, children, authCallback } = this.props;
     const { openModal } = this.state;
 
     const button = children ? (
@@ -105,8 +105,9 @@ export default class CrowdinLoginComponent extends React.Component<
           <Popout
             url={this.buildCodeRequestURL()}
             title="Sign in to CrowdIn"
-            onClosing={console.log}
-            options={{ height: "470px" }}
+            onClosing={() =>
+              authCallback && authCallback("User closed OAuth popup")
+            }
           />
         )}
       </>
