@@ -14,8 +14,7 @@ export default class CrowdinLoginComponent extends React.Component<
     super(props);
 
     this.state = {
-      openModal: false,
-      code: ""
+      openModal: false
     };
   }
 
@@ -30,14 +29,17 @@ export default class CrowdinLoginComponent extends React.Component<
         window.origin
       );
     } else {
+      const { authCallback } = this.props;
       window.onmessage = ({ data: { type, data } }: any) => {
         if (type === "code") {
-          this.sendTokenRequest(data).then(data => {
-            console.log(data);
-            this.setState({
-              openModal: false
+          this.sendTokenRequest(data)
+            .then(res => res.json())
+            .then(data => {
+              authCallback && authCallback(null, data);
+              this.setState({
+                openModal: false
+              });
             });
-          });
         }
       };
     }
@@ -49,14 +51,32 @@ export default class CrowdinLoginComponent extends React.Component<
     return `https://accounts.crowdin.com/oauth/authorize/?client_id=${clientId}&redirect_uri=${uri}&response_type=code&scope=${scope}&domain=${domain}`;
   };
 
-  buildTokenRequestURL = code => {
-    const { clientId, clientSecret, redirectUri, domain } = this.props;
-    const uri = encodeURIComponent(redirectUri || window.location.href);
-    return `https://accounts.crowdin.com/oauth/token/?client_id=${clientId}&client_secret=${clientSecret}&redirect_uri=${uri}&grant_type=authorization_code&domain=${domain}&code=${code}`;
+  sendTokenRequest = (code: string) => {
+    const {
+      clientId: client_id,
+      clientSecret: client_secret,
+      redirectUri,
+      domain
+    } = this.props;
+    const redirect_uri = redirectUri || window.location.href;
+    return fetch(
+      `https://cors-anywhere.herokuapp.com/https://accounts.crowdin.com/oauth/token`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          client_id,
+          client_secret,
+          redirect_uri,
+          grant_type: "authorization_code",
+          domain,
+          code
+        })
+      }
+    );
   };
-
-  sendTokenRequest = code =>
-    fetch(this.buildTokenRequestURL(code), { method: "POST" });
 
   handleLoginClick = () => {
     this.setState({
@@ -67,8 +87,6 @@ export default class CrowdinLoginComponent extends React.Component<
   render() {
     const { buttonTheme, className, children } = this.props;
     const { openModal } = this.state;
-
-    console.log(this.state);
 
     const button = children ? (
       <div onClick={console.log}>{children}</div>
