@@ -11,7 +11,7 @@ React component for a simple OAuth login with Crowdin
 
 For more about our Login Branding please visit the [page](https://github.com/crowdin/react-crowdin-login/wiki/Login-Branding-Guidelines) on Wiki.
 
-### Get Started 
+### Get Started
 
 Follow these steps to start using React Crowdin Login:
 
@@ -30,42 +30,47 @@ yarn add react-crowdin-login
 ```jsx
 import React from "react";
 import CrowdinLogin from "react-crowdin-login";
- 
+
 export default props => {
   const authHandler = (err, data) => {
     console.log(err, data);
   };
- 
+
   return (
     <CrowdinLogin
-			authCallback={authHandler}
-			clientId={CLIENT_ID}
-			clientSecret={CLIENT_SECRET}
-			domain={ORG_DOMAIN}
-			redirectUri={REDIRECT_URI}
-			scope={SCOPE}
-		/>
+      authCallback={authHandler}
+      clientId={CLIENT_ID}
+      clientSecret={CLIENT_SECRET}
+      domain={ORG_DOMAIN}
+      redirectUri={REDIRECT_URI}
+      scope={SCOPE}
+    />
   );
 };
 ```
 
 ### Contribution
+
 We are happy to accept contributions to the React Crowdin Login. To contribute please do the following:
+
 1. Fork the repository on GitHub.
 2. Decide which code you want to submit. Commit your changes and push to the new branch.
 3. Ensure that your code adheres to standard conventions, as used in the rest of the library.
 4. Submit a pull request with your patch on Github.
 
 ### Seeking Assistance
+
 If you find any problems or would like to suggest a feature, please feel free to file an issue on Github at [Issues Page](https://github.com/crowdin/react-crowdin-login/issues).
 
 Need help working with React Crowdin Login or have any questions?
 [Contact Customer Success Service](https://crowdin.com/contacts).
 
 ### Author
+
 - Alexandr Tovmach (alexandrtovmach@gmail.com)
 
 ### License
+
 <pre>
 Copyright © 2019 Crowdin
 
