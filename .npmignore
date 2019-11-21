@@ -1,5 +1,8 @@
 .babelrc
 .gitignore
+.idea
+.vscode
+ci
 README.md
 src
 examples
