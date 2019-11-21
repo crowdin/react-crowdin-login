@@ -1,10 +1,9 @@
 import * as React from "react";
 import { parse } from "query-string";
-//@ts-ignore
-import Popout from "react-popout";
 
 import { CrowdinLoginProps, CrowdinLoginState } from "../";
 import CrowdinLoginButton from "./CrowdinLoginButton";
+import { openWindow, observeWindow } from "./services/window";
 
 export default class CrowdinLoginComponent extends React.Component<
   CrowdinLoginProps,
@@ -14,7 +13,7 @@ export default class CrowdinLoginComponent extends React.Component<
     super(props);
 
     this.state = {
-      isModalOpen: false
+      isCompleted: false
     };
   }
 
@@ -35,10 +34,16 @@ export default class CrowdinLoginComponent extends React.Component<
           this.sendTokenRequest(data)
             .then(res => res.json())
             .then(data => {
-              authCallback && authCallback(null, data);
-              this.setState({
-                isModalOpen: false
-              });
+              const { popup } = this.state;
+              this.setState(
+                {
+                  isCompleted: true
+                },
+                () => {
+                  authCallback && authCallback(undefined, data);
+                  popup && popup.close();
+                }
+              );
             });
         }
       };
@@ -79,22 +84,29 @@ export default class CrowdinLoginComponent extends React.Component<
   };
 
   handleLoginClick = () => {
-    this.setState({
-      isModalOpen: true
+    const popup = openWindow({
+      url: this.buildCodeRequestURL(),
+      name: "Log in with Crowdin"
     });
+
+    if (popup) {
+      observeWindow({ popup, onClose: this.handleClosingPopup });
+      this.setState({
+        popup
+      });
+    }
   };
 
   handleClosingPopup = () => {
     const { authCallback } = this.props;
-    authCallback && authCallback("User closed OAuth popup");
-    this.setState({
-      isModalOpen: false
-    });
+    const { isCompleted } = this.state;
+    if (!isCompleted) {
+      authCallback && authCallback("User closed OAuth popup");
+    }
   };
 
   render() {
     const { buttonTheme, className } = this.props;
-    const { isModalOpen } = this.state;
 
     return (
       <>
@@ -103,13 +115,6 @@ export default class CrowdinLoginComponent extends React.Component<
           buttonClassName={className}
           onClick={this.handleLoginClick}
         />
-        {isModalOpen && (
-          <Popout
-            url={this.buildCodeRequestURL()}
-            title="Sign in to CrowdIn"
-            onClosing={() => console.log("ascascaw")}
-          />
-        )}
       </>
     );
   }

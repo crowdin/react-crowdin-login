@@ -51,6 +51,6 @@ interface CrowdinLoginProps {
 
 
 interface CrowdinLoginState {
-  isModalOpen: boolean;
-  code?: string;
+  isCompleted: boolean;
+  popup?: Window;
 }
