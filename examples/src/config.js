@@ -1,6 +1,8 @@
 export default {
-  client_id: "f8c7976f-3e93-482d-88a3-62a1133cbbc3",
-  graphScopes: ["user.read"],
+  clientId: "rC4NvIV3Q8xotvxlEcUJ",
+  clientSecret: "0I1pqXeyfDVy4qyNnIhpTg4G3IoUnIdY3iANsx6k",
+	scope: 'tm',
+	domain: 'alexandrtovmach',
   themeOptions: [
     {
       key: 'dark',

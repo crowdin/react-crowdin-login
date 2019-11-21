@@ -1,16 +1,22 @@
 import React from 'react';
 import { Container, Header, Label, Icon, Segment, Select, Radio, Form } from 'semantic-ui-react';
 
-import config from "./config";
+import initialConfig from "./config";
 import CrowdinLogin from "../../dist";
 
 export default class ExaplePage extends React.Component {
   constructor(props, context) {
     super(props, context);
-    
+
+		const { clientId, clientSecret, scope, domain } = initialConfig;    
     this.state = {
-      clientId: config.client_id,
-      buttonTheme: "light",
+      clientId,
+      clientSecret,
+      redirectUri: window.location.href,
+			scope,
+			domain,
+			customClassName: "my-custom-class",
+      buttonTheme: "dark",
       withUserData: true,
       customButton: false,
       forceRedirectStrategy: false,
@@ -33,7 +39,7 @@ export default class ExaplePage extends React.Component {
   };
 
   render() {
-    const { clientId, buttonTheme, withUserData, debug, customButton, forceRedirectStrategy } = this.state;
+    const { clientId, clientSecret, scope, buttonTheme, debug, domain, customClassName, redirectUri } = this.state;
     return (
       <div className="viewport">
         <Segment basic>
@@ -57,8 +63,40 @@ export default class ExaplePage extends React.Component {
                   <label>Client ID</label>
                   <input
                     onChange={e => this.handleChange(e.target.value, "clientId")}
-                    placeholder='f8c7976f-3e93-482d-88a3-62a1133cbbc3'
+                    placeholder={initialConfig.clientId}
                     value={clientId}
+                  />
+                </Form.Field>
+                <Form.Field>
+                  <label>Client Secret</label>
+                  <input
+                    onChange={e => this.handleChange(e.target.value, "clientSecret")}
+                    placeholder={initialConfig.clientSecret}
+                    value={clientSecret}
+                  />
+                </Form.Field>
+                <Form.Field>
+                  <label>Redirect URI</label>
+                  <input
+                    onChange={e => this.handleChange(e.target.value, "redirectUri")}
+                    placeholder='https://example.com'
+                    value={redirectUri}
+                  />
+                </Form.Field>
+                <Form.Field>
+                  <label>Domain</label>
+                  <input
+                    onChange={e => this.handleChange(e.target.value, "domain")}
+                    placeholder='crowdinorg'
+                    value={domain}
+                  />
+                </Form.Field>
+                <Form.Field>
+                  <label>Scope</label>
+                  <input
+                    onChange={e => this.handleChange(e.target.value, "scope")}
+                    placeholder='tm'
+                    value={scope}
                   />
                 </Form.Field>
                 <Form.Field>
@@ -68,40 +106,16 @@ export default class ExaplePage extends React.Component {
                     labeled
                     label="Button theme"
                     placeholder='Select your country'
-                    options={config.themeOptions}
+                    options={initialConfig.themeOptions}
                     defaultValue={buttonTheme}
                   />
                 </Form.Field>
                 <Form.Field>
-                  <Radio
-                    onChange={(e, data) => this.handleChange(data.checked, "withUserData")}
-                    label="With user data"
-                    defaultChecked={withUserData}
-                    toggle
-                  />
-                </Form.Field>
-                <Form.Field>
-                  <Radio
-                    onChange={(e, data) => this.handleChange(data.checked, "debug")}
-                    label="Debug"
-                    defaultChecked={debug}
-                    toggle
-                  />
-                </Form.Field>
-                <Form.Field>
-                  <Radio
-                    onChange={(e, data) => this.handleChange(data.checked, "forceRedirectStrategy")}
-                    label="Force redirect strategy"
-                    defaultChecked={forceRedirectStrategy}
-                    toggle
-                  />
-                </Form.Field>
-                <Form.Field>
-                  <Radio
-                    onChange={(e, data) => this.handleChange(data.checked, "customButton")}
-                    label="Custom button content (children prop)"
-                    defaultChecked={customButton}
-                    toggle
+                  <label>Class name</label>
+                  <input
+                    onChange={e => this.handleChange(e.target.value, "customClassName")}
+                    placeholder='my-custom-class'
+                    value={customClassName}
                   />
                 </Form.Field>
                 <Form.Field>
@@ -110,24 +124,27 @@ export default class ExaplePage extends React.Component {
                     {`(err, data) => console.log(err, data)`}
                   </code>
                 </Form.Field>
-                <Form.Field>
-                  <label>Graph scopes</label>
-                  <span>user.read</span>
-                </Form.Field>
-                <Form.Field>
-                  <label>Custom class</label>
-                  my-custom-class
-                </Form.Field>
+                {/* <Form.Field>
+                  <Radio
+                    onChange={(e, data) => this.handleChange(data.checked, "debug")}
+                    label="Debug"
+                    defaultChecked={debug}
+                    toggle
+                  />
+                </Form.Field> */}
               </Form>
             </Segment>
             <Segment>
               <CrowdinLogin
-                debug={debug}
+                // debug={debug}
                 clientId={clientId}
+                clientSecret={clientSecret}
+                domain={domain}
                 authCallback={this.loginHandler}
                 buttonTheme={buttonTheme}
-                className="my-custom-class"
-                scopes={config.graphScopes}
+                className={customClassName}
+                redirectUri={redirectUri}
+                scope={scope}
 							/>
             </Segment>
           </Container>
