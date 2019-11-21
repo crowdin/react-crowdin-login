@@ -9,8 +9,6 @@ React component for a simple OAuth login with Crowdin
 ![dark border lowerc short](images/dark_border_lowerc_short.svg)
 ![dark border lowerc](images/dark_border_lowerc.svg)
 
-For more about our Login Branding please visit the [page](https://github.com/crowdin/react-crowdin-login/wiki/Login-Branding-Guidelines) on Wiki.
-
 ### Get Started
 
 Follow these steps to start using React Crowdin Login:
@@ -48,6 +46,21 @@ export default props => {
   );
 };
 ```
+
+3. Find more info about keys and OAuth apps in official docs ― [Creating an OAuth App](https://support.crowdin.com/enterprise/creating-oauth-app/)
+
+### API
+
+| Property     | Type                                                       | Default   | Description                                                                                                                                      |
+| ------------ | ---------------------------------------------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| authCallback | function                                                   | required  | Callback function which takes two arguments `(error, authData)`                                                                                  |
+| clientId     | string                                                     | required  | Client ID of your OAuth App                                                                                                                      |
+| clientSecret | string                                                     | required  | Client Secret of your OAuth App                                                                                                                  |
+| domain       | string                                                     | required  | Domain of your Crowdin organization                                                                                                              |
+| redirectUri  | string                                                     | required  | Authorization callback URL of your OAuth App                                                                                                     |
+| scope        | string                                                     | required  | Scope that will be requested. [Understanding Scopes for OAuth Apps](https://support.crowdin.com/enterprise/understanding-scopes-for-oauth-apps/) |
+| buttonTheme  | enum: `"light"`, `"light_short"`, `"dark"`, `"dark_short"` | `"light"` | Button style theme, that based on [Login Branding Guidelines](https://github.com/crowdin/react-crowdin-login/wiki/Login-Branding-Guidelines)     |
+| className    | string                                                     | `""`      | Custom class name                                                                                                                                |
 
 ### Contribution
 
