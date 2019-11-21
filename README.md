@@ -15,12 +15,38 @@ For more about our Login Branding please visit the [page](https://github.com/cro
 
 Follow these steps to start using React Crowdin Login:
 
-1. Installation. [TBA]
+1. Installation
+
+```sh
+# with npm
+npm i react-crowdin-login
+
+# with yarn
+yarn add react-crowdin-login
+```
 
 2. Import and configure component.
 
-```
-TBA
+```jsx
+import React from "react";
+import CrowdinLogin from "react-crowdin-login";
+ 
+export default props => {
+  const authHandler = (err, data) => {
+    console.log(err, data);
+  };
+ 
+  return (
+    <CrowdinLogin
+			authCallback={authHandler}
+			clientId={CLIENT_ID}
+			clientSecret={CLIENT_SECRET}
+			domain={ORG_DOMAIN}
+			redirectUri={REDIRECT_URI}
+			scope={SCOPE}
+		/>
+  );
+};
 ```
 
 ### Contribution
