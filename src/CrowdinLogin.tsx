@@ -14,7 +14,7 @@ export default class CrowdinLoginComponent extends React.Component<
     super(props);
 
     this.state = {
-      openModal: false
+      isModalOpen: false
     };
   }
 
@@ -37,7 +37,7 @@ export default class CrowdinLoginComponent extends React.Component<
             .then(data => {
               authCallback && authCallback(null, data);
               this.setState({
-                openModal: false
+                isModalOpen: false
               });
             });
         }
@@ -80,34 +80,34 @@ export default class CrowdinLoginComponent extends React.Component<
 
   handleLoginClick = () => {
     this.setState({
-      openModal: true
+      isModalOpen: true
+    });
+  };
+
+  handleClosingPopup = () => {
+    const { authCallback } = this.props;
+    authCallback && authCallback("User closed OAuth popup");
+    this.setState({
+      isModalOpen: false
     });
   };
 
   render() {
-    const { buttonTheme, className, children, authCallback } = this.props;
-    const { openModal } = this.state;
-
-    const button = children ? (
-      <div onClick={console.log}>{children}</div>
-    ) : (
-      <CrowdinLoginButton
-        buttonTheme={buttonTheme || "light"}
-        buttonClassName={className}
-        onClick={this.handleLoginClick}
-      />
-    );
+    const { buttonTheme, className } = this.props;
+    const { isModalOpen } = this.state;
 
     return (
       <>
-        {button}
-        {openModal && (
+        <CrowdinLoginButton
+          buttonTheme={buttonTheme || "light"}
+          buttonClassName={className}
+          onClick={this.handleLoginClick}
+        />
+        {isModalOpen && (
           <Popout
             url={this.buildCodeRequestURL()}
             title="Sign in to CrowdIn"
-            onClosing={() =>
-              authCallback && authCallback("User closed OAuth popup")
-            }
+            onClosing={() => console.log("ascascaw")}
           />
         )}
       </>
