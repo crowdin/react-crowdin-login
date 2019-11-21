@@ -4,6 +4,8 @@
 
 React component for a simple OAuth login with Crowdin
 
+[DEMO HERE](https://crowdin.github.io/react-crowdin-login/)
+
 ![light border lowerc short](images/light_border_lowerc_short.svg)
 ![light border lowerc](images/light_border_lowerc.svg)
 ![dark border lowerc short](images/dark_border_lowerc_short.svg)
