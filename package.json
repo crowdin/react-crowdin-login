@@ -63,5 +63,9 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/crowdin/react-crowdin-login/issues"
+  },
+  "homepage": "https://github.com/crowdin/react-crowdin-login#readme"
 }

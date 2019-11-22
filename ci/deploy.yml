@@ -1,0 +1,39 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+  branches:
+    include:
+      - refs/tags/*
+      - refs/heads/*
+
+stages:
+  - stage: Publish
+    jobs:
+    - job: npm
+      pool:
+        vmImage: 'ubuntu-latest'
+      steps:
+        - task: Npm@1
+          inputs:
+            command: install
+          displayName: 'Command `npm install`'
+        - task: Npm@1
+          inputs:
+            command: ci
+          displayName: 'Command `npm ci`'
+        - task: Npm@1
+          inputs:
+            command: custom
+            verbose: false
+            customCommand: publish --dry-run
+            publishEndpoint: 'npm-connection'
+          displayName: 'Command `npm publish --dry-run`'
+        - task: Npm@1
+          condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/'))
+          inputs:
+            command: publish
+            publishEndpoint: 'npm-connection'
+          displayName: 'Command `npm publish` (Tags only)'

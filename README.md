@@ -2,14 +2,19 @@
 
 # React Crowdin Login
 
-React component for a simple OAuth login with Crowdin
+[![npm](https://img.shields.io/npm/v/@crowdin/react-crowdin-login?logo=npm&cacheSeconds=1800)](https://www.npmjs.com/package/@crowdin/react-crowdin-login)
+[![npm](https://img.shields.io/npm/dt/@crowdin/react-crowdin-login?cacheSeconds=1800)](https://www.npmjs.com/package/@crowdin/crowdin-api-client)
+[![npm bundle size](https://img.shields.io/bundlephobia/minzip/@crowdin/react-crowdin-login?cacheSeconds=1800)](https://www.npmjs.com/package/@crowdin/react-crowdin-login)
+[![GitHub issues](https://img.shields.io/github/issues/crowdin/react-crowdin-login?cacheSeconds=1800)](https://github.com/crowdin/react-crowdin-login/issues)
+
+React component for a simple OAuth login with [Crowdin](https://crowdin.com/). 
 
 [DEMO HERE](https://crowdin.github.io/react-crowdin-login/)
 
-![light border lowerc short](images/light_border_lowerc_short.svg)
-![light border lowerc](images/light_border_lowerc.svg)
-![dark border lowerc short](images/dark_border_lowerc_short.svg)
-![dark border lowerc](images/dark_border_lowerc.svg)
+![light border lowerc short](https://github.com/crowdin/react-crowdin-login/blob/master/images/light_border_lowerc_short.svg)
+![light border lowerc](https://github.com/crowdin/react-crowdin-login/blob/master/images/light_border_lowerc.svg)
+![dark border lowerc short](https://github.com/crowdin/react-crowdin-login/blob/master/images/dark_border_lowerc_short.svg)
+![dark border lowerc](https://github.com/crowdin/react-crowdin-login/blob/master/images/dark_border_lowerc.svg)
 
 ### Get Started
 
@@ -19,17 +24,17 @@ Follow these steps to start using React Crowdin Login:
 
 ```sh
 # with npm
-npm i react-crowdin-login
+npm i @crowdin/react-crowdin-login
 
 # with yarn
-yarn add react-crowdin-login
+yarn add @crowdin/react-crowdin-login
 ```
 
 2. Import and configure component.
 
 ```jsx
 import React from "react";
-import CrowdinLogin from "react-crowdin-login";
+import CrowdinLogin from "@crowdin/react-crowdin-login";
 
 export default props => {
   const authHandler = (err, data) => {
