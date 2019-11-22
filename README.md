@@ -11,10 +11,10 @@ React component for a simple OAuth login with [Crowdin](https://crowdin.com/).
 
 [DEMO HERE](https://crowdin.github.io/react-crowdin-login/)
 
-![light border lowerc short](https://github.com/crowdin/react-crowdin-login/blob/master/images/light_border_lowerc_short.svg)
-![light border lowerc](https://github.com/crowdin/react-crowdin-login/blob/master/images/light_border_lowerc.svg)
-![dark border lowerc short](https://github.com/crowdin/react-crowdin-login/blob/master/images/dark_border_lowerc_short.svg)
-![dark border lowerc](https://github.com/crowdin/react-crowdin-login/blob/master/images/dark_border_lowerc.svg)
+![light border lowerc short](https://raw.github.com/crowdin/react-crowdin-login/master/images/light_border_lowerc_short.svg?sanitize=true)
+![light border lowerc](https://raw.github.com/crowdin/react-crowdin-login/master/images/light_border_lowerc.svg?sanitize=true)
+![dark border lowerc short](https://raw.github.com/crowdin/react-crowdin-login/master/images/dark_border_lowerc_short.svg?sanitize=true)
+![dark border lowerc](https://raw.github.com/crowdin/react-crowdin-login/master/images/dark_border_lowerc.svg?sanitize=true)
 
 ### Get Started
 
