@@ -1,5 +1,4 @@
 import * as React from "react";
-import { parse } from "query-string";
 
 import { CrowdinLoginProps, CrowdinLoginState } from "../";
 import CrowdinLoginButton from "./CrowdinLoginButton";
@@ -18,8 +17,13 @@ export default class CrowdinLoginComponent extends React.Component<
   }
 
   componentDidMount() {
+    this.initializeProcess();
+  }
+
+  initializeProcess = () => {
     if (window.opener) {
-      const { code } = parse(window.location.search);
+      const [match, code] =
+        window.location.search.match(/.*code=([^&|\n|\t\s]+)/) || [];
       window.opener.postMessage(
         {
           type: "code",
@@ -48,7 +52,7 @@ export default class CrowdinLoginComponent extends React.Component<
         }
       };
     }
-  }
+  };
 
   buildCodeRequestURL = () => {
     const { clientId, redirectUri, scope, domain } = this.props;
