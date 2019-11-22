@@ -67,5 +67,9 @@
   "dependencies": {
     "query-string": "^6.8.3",
     "react-popout": "^1.0.2"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/crowdin/react-crowdin-login/issues"
+  },
+  "homepage": "https://github.com/crowdin/react-crowdin-login#readme"
 }
