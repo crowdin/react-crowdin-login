@@ -60,7 +60,7 @@ declare class CrowdinLogin extends React.Component<
   CrowdinLoginState
 > {}
 
-export { CrowdinLogin };
+export { CrowdinLogin, CrowdinLoginProps, CrowdinLoginState, CrowdinLoginButtonTheme };
 
 export default CrowdinLogin;
 
