@@ -16,10 +16,10 @@ stages:
       pool:
         vmImage: 'ubuntu-latest'
       steps:
-        - task: Npm@1
-          inputs:
-            command: install
-          displayName: 'Command `npm install`'
+        - script: |
+            npm install
+            npm run build
+          displayName: 'Commands `npm install`, `npm run build`'
         - task: Npm@1
           inputs:
             command: ci
