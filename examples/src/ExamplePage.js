@@ -49,7 +49,7 @@ export default class ExaplePage extends React.Component {
               <Label basic size="mini" as='a' href="https://github.com/crowdin/react-crowdin-login">
                 <Icon name='github' />GitHub
               </Label>
-              <Label basic size="mini" as='a' href="https://www.npmjs.com/package/react-crowdin-login">
+              <Label basic size="mini" as='a' href="https://www.npmjs.com/package/@crowdin/react-crowdin-login">
                 <Icon name='npm' />NPM
               </Label>
             </Header>
