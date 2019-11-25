@@ -54,3 +54,13 @@ interface CrowdinLoginState {
   isCompleted: boolean;
   popup?: Window;
 }
+
+declare class CrowdinLogin extends React.Component<
+  CrowdinLoginProps,
+  CrowdinLoginState
+> {}
+
+export { CrowdinLogin };
+
+export default CrowdinLogin;
+
