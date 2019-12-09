@@ -1,5 +1,14 @@
-import React from 'react';
-import { Container, Header, Label, Icon, Segment, Select, Radio, Form } from 'semantic-ui-react';
+import React from "react";
+import {
+  Container,
+  Header,
+  Label,
+  Icon,
+  Segment,
+  Select,
+  Radio,
+  Form
+} from "semantic-ui-react";
 
 import config from "./config";
 import CrowdinLogin from "../../dist";
@@ -8,14 +17,21 @@ export default class ExaplePage extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-		const { clientId, clientSecret, customClassName, scopes, domain, themeOptions } = config;    
+    const {
+      clientId,
+      clientSecret,
+      customClassName,
+      scopes,
+      domain,
+      themeOptions
+    } = config;
     this.state = {
       clientId,
       clientSecret,
-			domain,
-			customClassName,
+      domain,
+      customClassName,
       redirectUri: window.location.href,
-			scope: [scopes[0].value],
+      scope: [scopes[0].value],
       buttonTheme: themeOptions[0].value
     };
 
@@ -23,7 +39,6 @@ export default class ExaplePage extends React.Component {
     this.loginHandler = this.loginHandler.bind(this);
   }
 
-  
   handleChange(value, type) {
     this.setState({
       [type]: value
@@ -32,33 +47,56 @@ export default class ExaplePage extends React.Component {
 
   loginHandler(err, data) {
     console.log(err, data);
-  };
+  }
 
   render() {
-    const { clientId, clientSecret, scope, buttonTheme, domain, customClassName, redirectUri } = this.state;
+    const {
+      clientId,
+      clientSecret,
+      scope,
+      buttonTheme,
+      domain,
+      customClassName,
+      redirectUri
+    } = this.state;
     return (
       <div className="viewport">
         <Segment basic>
           <Container text>
-            <Header as='h2'>
+            <Header as="h2">
               react-crowdin-login
-              <Label basic size="mini" as='a' href="https://github.com/crowdin/react-crowdin-login">
-                <Icon name='github' />GitHub
+              <Label
+                basic
+                size="mini"
+                as="a"
+                href="https://github.com/crowdin/react-crowdin-login"
+              >
+                <Icon name="github" />
+                GitHub
               </Label>
-              <Label basic size="mini" as='a' href="https://www.npmjs.com/package/@crowdin/react-crowdin-login">
-                <Icon name='npm' />NPM
+              <Label
+                basic
+                size="mini"
+                as="a"
+                href="https://www.npmjs.com/package/@crowdin/react-crowdin-login"
+              >
+                <Icon name="npm" />
+                NPM
               </Label>
             </Header>
-            
+
             <p>
-              React component for easy login to Crowdin services using OAuth technology without backend.
+              React component for easy login to Crowdin services using OAuth
+              technology without backend.
             </p>
             <Segment>
               <Form>
                 <Form.Field>
                   <label>Client ID</label>
                   <input
-                    onChange={e => this.handleChange(e.target.value, "clientId")}
+                    onChange={e =>
+                      this.handleChange(e.target.value, "clientId")
+                    }
                     placeholder={config.clientId}
                     value={clientId}
                   />
@@ -66,7 +104,9 @@ export default class ExaplePage extends React.Component {
                 <Form.Field>
                   <label>Client Secret</label>
                   <input
-                    onChange={e => this.handleChange(e.target.value, "clientSecret")}
+                    onChange={e =>
+                      this.handleChange(e.target.value, "clientSecret")
+                    }
                     placeholder={config.clientSecret}
                     value={clientSecret}
                   />
@@ -74,8 +114,10 @@ export default class ExaplePage extends React.Component {
                 <Form.Field>
                   <label>Redirect URI</label>
                   <input
-                    onChange={e => this.handleChange(e.target.value, "redirectUri")}
-                    placeholder='https://example.com'
+                    onChange={e =>
+                      this.handleChange(e.target.value, "redirectUri")
+                    }
+                    placeholder="https://example.com"
                     value={redirectUri}
                   />
                 </Form.Field>
@@ -83,7 +125,7 @@ export default class ExaplePage extends React.Component {
                   <label>Domain</label>
                   <input
                     onChange={e => this.handleChange(e.target.value, "domain")}
-                    placeholder='crowdinorg'
+                    placeholder="crowdinorg"
                     value={domain}
                   />
                 </Form.Field>
@@ -92,7 +134,7 @@ export default class ExaplePage extends React.Component {
                   <Select
                     multiple
                     onChange={e => this.handleChange(e.target.value, "scope")}
-                    placeholder='tm'
+                    placeholder="tm"
                     options={config.scopes}
                     defaultValue={scope}
                     value={scope}
@@ -101,10 +143,12 @@ export default class ExaplePage extends React.Component {
                 <Form.Field>
                   <label>Button theme</label>
                   <Select
-                    onChange={(e, data) => this.handleChange(data.value, "buttonTheme")}
+                    onChange={(e, data) =>
+                      this.handleChange(data.value, "buttonTheme")
+                    }
                     labeled
                     label="Button theme"
-                    placeholder='Select your country'
+                    placeholder="Select your country"
                     options={config.themeOptions}
                     defaultValue={buttonTheme}
                   />
@@ -112,16 +156,16 @@ export default class ExaplePage extends React.Component {
                 <Form.Field>
                   <label>Class name</label>
                   <input
-                    onChange={e => this.handleChange(e.target.value, "customClassName")}
-                    placeholder='my-custom-class'
+                    onChange={e =>
+                      this.handleChange(e.target.value, "customClassName")
+                    }
+                    placeholder="my-custom-class"
                     value={customClassName}
                   />
                 </Form.Field>
                 <Form.Field>
                   <label>Auth callback</label>
-                  <code>
-                    {`(err, data) => console.log(err, data)`}
-                  </code>
+                  <code>{`(err, data) => console.log(err, data)`}</code>
                 </Form.Field>
                 {/* <Form.Field>
                   <Radio
@@ -144,7 +188,7 @@ export default class ExaplePage extends React.Component {
                 className={customClassName}
                 redirectUri={redirectUri}
                 scope={scope}
-							/>
+              />
             </Segment>
           </Container>
         </Segment>
