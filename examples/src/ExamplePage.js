@@ -1,26 +1,22 @@
 import React from 'react';
 import { Container, Header, Label, Icon, Segment, Select, Radio, Form } from 'semantic-ui-react';
 
-import initialConfig from "./config";
+import config from "./config";
 import CrowdinLogin from "../../dist";
 
 export default class ExaplePage extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-		const { clientId, clientSecret, scope, domain } = initialConfig;    
+		const { clientId, clientSecret, customClassName, scopes, domain, themeOptions } = config;    
     this.state = {
       clientId,
       clientSecret,
-      redirectUri: window.location.href,
-			scope,
 			domain,
-			customClassName: "my-custom-class",
-      buttonTheme: "dark",
-      withUserData: true,
-      customButton: false,
-      forceRedirectStrategy: false,
-      debug: true
+			customClassName,
+      redirectUri: window.location.href,
+			scope: [scopes[0].value],
+      buttonTheme: themeOptions[0].value
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -39,7 +35,7 @@ export default class ExaplePage extends React.Component {
   };
 
   render() {
-    const { clientId, clientSecret, scope, buttonTheme, debug, domain, customClassName, redirectUri } = this.state;
+    const { clientId, clientSecret, scope, buttonTheme, domain, customClassName, redirectUri } = this.state;
     return (
       <div className="viewport">
         <Segment basic>
@@ -63,7 +59,7 @@ export default class ExaplePage extends React.Component {
                   <label>Client ID</label>
                   <input
                     onChange={e => this.handleChange(e.target.value, "clientId")}
-                    placeholder={initialConfig.clientId}
+                    placeholder={config.clientId}
                     value={clientId}
                   />
                 </Form.Field>
@@ -71,7 +67,7 @@ export default class ExaplePage extends React.Component {
                   <label>Client Secret</label>
                   <input
                     onChange={e => this.handleChange(e.target.value, "clientSecret")}
-                    placeholder={initialConfig.clientSecret}
+                    placeholder={config.clientSecret}
                     value={clientSecret}
                   />
                 </Form.Field>
@@ -93,9 +89,12 @@ export default class ExaplePage extends React.Component {
                 </Form.Field>
                 <Form.Field>
                   <label>Scope</label>
-                  <input
+                  <Select
+                    multiple
                     onChange={e => this.handleChange(e.target.value, "scope")}
                     placeholder='tm'
+                    options={config.scopes}
+                    defaultValue={scope}
                     value={scope}
                   />
                 </Form.Field>
@@ -106,7 +105,7 @@ export default class ExaplePage extends React.Component {
                     labeled
                     label="Button theme"
                     placeholder='Select your country'
-                    options={initialConfig.themeOptions}
+                    options={config.themeOptions}
                     defaultValue={buttonTheme}
                   />
                 </Form.Field>
