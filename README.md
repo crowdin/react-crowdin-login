@@ -3,11 +3,11 @@
 # React Crowdin Login
 
 [![npm](https://img.shields.io/npm/v/@crowdin/react-crowdin-login?logo=npm&cacheSeconds=1800)](https://www.npmjs.com/package/@crowdin/react-crowdin-login)
-[![npm](https://img.shields.io/npm/dt/@crowdin/react-crowdin-login?cacheSeconds=1800)](https://www.npmjs.com/package/@crowdin/crowdin-api-client)
+[![npm](https://img.shields.io/npm/dt/@crowdin/react-crowdin-login?cacheSeconds=1800)](https://www.npmjs.com/package/@crowdin/react-crowdin-login)
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@crowdin/react-crowdin-login?cacheSeconds=1800)](https://www.npmjs.com/package/@crowdin/react-crowdin-login)
 [![GitHub issues](https://img.shields.io/github/issues/crowdin/react-crowdin-login?cacheSeconds=1800)](https://github.com/crowdin/react-crowdin-login/issues)
 
-React component for a simple OAuth login with [Crowdin](https://crowdin.com/). 
+React component for a simple OAuth login with [Crowdin](https://crowdin.com/).
 
 [DEMO HERE](https://crowdin.github.io/react-crowdin-login/)
 
