@@ -92,7 +92,7 @@ Need help working with React Crowdin Login or have any questions?
 ### License
 
 <pre>
-Copyright © 2019 Crowdin
+Copyright © 2020 Crowdin
 
 The React Crowdin Login is licensed under the MIT License.
 See the LICENSE file distributed with this work for additional
