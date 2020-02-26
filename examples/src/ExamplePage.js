@@ -22,13 +22,11 @@ export default class ExaplePage extends React.Component {
       clientSecret,
       customClassName,
       scopes,
-      domain,
       themeOptions
     } = config;
     this.state = {
       clientId,
       clientSecret,
-      domain,
       customClassName,
       redirectUri: window.location.href,
       scope: [scopes[0].value],
@@ -55,7 +53,6 @@ export default class ExaplePage extends React.Component {
       clientSecret,
       scope,
       buttonTheme,
-      domain,
       customClassName,
       redirectUri
     } = this.state;
@@ -122,14 +119,6 @@ export default class ExaplePage extends React.Component {
                   />
                 </Form.Field>
                 <Form.Field>
-                  <label>Domain</label>
-                  <input
-                    onChange={e => this.handleChange(e.target.value, "domain")}
-                    placeholder="crowdinorg"
-                    value={domain}
-                  />
-                </Form.Field>
-                <Form.Field>
                   <label>Scope</label>
                   <Select
                     multiple
@@ -182,7 +171,6 @@ export default class ExaplePage extends React.Component {
                 // debug={debug}
                 clientId={clientId}
                 clientSecret={clientSecret}
-                domain={domain}
                 authCallback={this.loginHandler}
                 buttonTheme={buttonTheme}
                 className={customClassName}

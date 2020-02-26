@@ -55,17 +55,16 @@ export default class CrowdinLoginComponent extends React.Component<
   };
 
   buildCodeRequestURL = () => {
-    const { clientId, redirectUri, scope, domain } = this.props;
+    const { clientId, redirectUri, scope } = this.props;
     const uri = encodeURIComponent(redirectUri || window.location.href);
-    return `https://accounts.crowdin.com/oauth/authorize/?client_id=${clientId}&redirect_uri=${uri}&response_type=code&scope=${scope}&domain=${domain}`;
+    return `https://accounts.crowdin.com/oauth/authorize?client_id=${clientId}&redirect_uri=${uri}&response_type=code&scope=${scope}`;
   };
 
   sendTokenRequest = (code: string) => {
     const {
       clientId: client_id,
       clientSecret: client_secret,
-      redirectUri,
-      domain
+      redirectUri
     } = this.props;
     const redirect_uri = redirectUri || window.location.href;
     return fetch(
@@ -80,7 +79,6 @@ export default class CrowdinLoginComponent extends React.Component<
           client_secret,
           redirect_uri,
           grant_type: "authorization_code",
-          domain,
           code
         })
       }

@@ -64,7 +64,6 @@ export default {
       text: "project.report"
     },
   ],
-  domain: "alexandrtovmach",
   themeOptions: [
     {
       key: "dark",
