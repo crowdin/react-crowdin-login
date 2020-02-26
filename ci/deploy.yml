@@ -37,3 +37,10 @@ stages:
             command: publish
             publishEndpoint: 'npm-connection'
           displayName: 'Command `npm publish` (Tags only)'
+        - script: |
+            git config user.email "support+bot@crowdin.com"
+            git config user.name "Crowdin Bot"
+            npm install
+            npm run deploy -- -r https://$(GITHUB_TOKEN)@github.com/crowdin/react-crowdin-login.git
+          displayName: 'Deploy GH page'
+          condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/'))
