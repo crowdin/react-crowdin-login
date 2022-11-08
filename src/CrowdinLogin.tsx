@@ -68,7 +68,7 @@ export default class CrowdinLoginComponent extends React.Component<
     } = this.props;
     const redirect_uri = redirectUri || window.location.href;
     return fetch(
-      `https://cors-anywhere.herokuapp.com/https://accounts.crowdin.com/oauth/token`,
+      `https://corsanywhere.herokuapp.com/https://accounts.crowdin.com/oauth/token`,
       {
         method: "POST",
         headers: {
