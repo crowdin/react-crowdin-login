@@ -9,3 +9,5 @@ examples
 webpack.config.js
 yarn.lock
 package-lock.json
+.github
+tsconfig.json
