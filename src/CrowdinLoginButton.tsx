@@ -8,7 +8,7 @@ interface CrowdinLoginButtonProps {
   onClick?: any;
 }
 
-const CrowdinLoginButton: React.SFC<CrowdinLoginButtonProps> = ({
+const CrowdinLoginButton: React.FC<CrowdinLoginButtonProps> = ({
   buttonTheme,
   buttonClassName,
   onClick
