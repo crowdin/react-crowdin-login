@@ -1,0 +1,46 @@
+name: Publish
+
+on:
+  release:
+    types: [created]
+  push: # temporary
+    branches:
+      - '*'
+
+jobs:
+  publish-npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install dependencies, build and publish
+        run: |
+          npm ci
+          npm run build
+          npm publish --dry-run
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  deploy-gh-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install dependencies, build and publish
+        run: |
+          npm ci
+          npm run build
+
+      - name: Deploy GH Pages
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        with:
+          branch: gh-pages
+          folder: examples/dist
