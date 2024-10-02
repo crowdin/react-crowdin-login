@@ -1,11 +1,13 @@
-name: Publish
+name: Example Deploy
 
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - 'master'
+  workflow_dispatch:
 
 jobs:
-  publish-npm:
+  deploy-gh-pages:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -18,11 +20,11 @@ jobs:
         run: npm ci
 
       - name: Build
-        working-directory: packages/react-crowdin-login
+        working-directory: packages/example
         run: npm run build
 
-      - name: Publish to NPM
-        working-directory: packages/react-crowdin-login
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Deploy GH Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: packages/example/dist

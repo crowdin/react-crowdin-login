@@ -1,0 +1,23 @@
+{
+  "name": "@crowdin/react-login-example",
+  "private": true,
+  "type": "module",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@crowdin/react-crowdin-login": "2.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sass": "^1.79.4",
+    "semantic-ui-css": "^2.5.0",
+    "semantic-ui-react": "^2.1.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.2"
+  }
+}

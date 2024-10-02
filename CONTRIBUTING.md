@@ -55,6 +55,17 @@ Unsure where to begin contributing to React Crowdin Login? You can start by look
 * [Good first issue](https://github.com/crowdin/react-crowdin-login/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22) - issues which should only require a small amount of code, and a test or two.
 * [Help wanted](https://github.com/crowdin/react-crowdin-login/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22) - issues which should be a bit more involved than `Good first issue` issues.
 
+### Project Setup
+
+The project uses NPM Workspaces to manage dependencies. The `packages/react-crowdin-login` directory contains the main package, and the `packages/example` directory contains the demo application.
+
+- Fork and clone the repo.
+- Run `npm install` to install dependencies.
+- Navigate to the `packages/react-crowdin-login` directory.
+  - Run `npm run watch` to start the development server.
+- Navigate to the `packages/example` directory.
+  - Run `npm run dev` to start the example project. It will use the local version of the `react-crowdin-login` package.
+
 #### Pull Request Checklist
 
 Before sending your pull requests, make sure you followed the list below:

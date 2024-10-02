@@ -1,0 +1,57 @@
+{
+  "name": "@crowdin/react-crowdin-login",
+  "description": "React component for simple OAuth with Crowdin",
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "watch": "vite build --watch",
+    "preview": "vite preview"
+  },
+  "main": "./dist/crowdin-login.umd.js",
+  "module": "./dist/crowdin-login.es.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/crowdin-login.es.js",
+      "require": "./dist/crowdin-login.umd.js"
+    }
+  },
+  "files": [
+    "dist",
+    "index.d.ts",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "devDependencies": {
+    "@types/react": "^18.3.10",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sass": "^1.79.4",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.8"
+  },
+  "peerDependencies": {
+    "react": "^16.3.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.3.0 || ^17.0.0 || ^18.0.0"
+  },
+  "keywords": [
+    "react",
+    "crowdin",
+    "login",
+    "auth",
+    "oauth"
+  ],
+  "license": "MIT",
+  "author": "alexandrtovmach@gmail.com",
+  "bugs": {
+    "url": "https://github.com/crowdin/react-crowdin-login/issues"
+  },
+  "homepage": "https://crowdin.github.io/react-crowdin-login",
+  "engines": {
+    "node": ">=20"
+  }
+}
