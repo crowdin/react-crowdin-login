@@ -53,5 +53,8 @@
   "homepage": "https://crowdin.github.io/react-crowdin-login",
   "engines": {
     "node": ">=20"
+  },
+  "dependencies": {
+    "pkce-challenge": "^4.1.0"
   }
 }

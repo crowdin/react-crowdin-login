@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
+import pkceChallenge from "pkce-challenge";
 import { openWindow, observeWindow } from "./services/window";
 import CrowdinLoginButton from "./CrowdinLoginButton";
 import { CrowdinLoginProps } from "../";
@@ -13,6 +14,7 @@ const CrowdinLoginComponent: React.FC<CrowdinLoginProps> = ({
 }) => {
   const [isCompleted, setIsCompleted] = useState(false);
   const [popup, setPopup] = useState<Window | null>(null);
+  const [codeVerifier, setCodeVerifier] = useState<string>("");
 
   useEffect(() => {
     const initializeProcess = () => {
@@ -27,8 +29,8 @@ const CrowdinLoginComponent: React.FC<CrowdinLoginProps> = ({
           window.origin
         );
       } else {
-        const messageHandler = ({ data }: MessageEvent) => {
-          const { type, data: code } = data;
+        window.onmessage = (event) => {
+          const { type, data: code } = event.data;
           if (type === "code") {
             sendTokenRequest(code)
               .then((res) => res.json())
@@ -39,30 +41,27 @@ const CrowdinLoginComponent: React.FC<CrowdinLoginProps> = ({
               });
           }
         };
-
-        window.onmessage = messageHandler;
-
-        return () => {
-          window.removeEventListener("message", messageHandler);
-        };
       }
     };
 
     initializeProcess();
-  }, [popup, authCallback]);
+  }, [popup, authCallback, codeVerifier]);
 
-  const buildCodeRequestURL = useCallback(() => {
+  const buildCodeRequestURL = useCallback(async () => {
     const uri = encodeURIComponent(redirectUri || window.location.href);
-    return `https://accounts.crowdin.com/oauth/authorize?client_id=${clientId}&redirect_uri=${uri}&response_type=code&scope=${scope}`;
+    const {code_verifier, code_challenge} = await pkceChallenge();
+    setCodeVerifier(code_verifier);
+
+    return `https://accounts.crowdin.com/oauth/authorize?client_id=${clientId}&redirect_uri=${uri}&response_type=code&scope=${scope}&code_challenge=${code_challenge}&code_challenge_method=S256`;
   }, [clientId, redirectUri, scope]);
 
-  const sendTokenRequest = useCallback((code: string) => {
+  const sendTokenRequest = useCallback(
+  (code: string) => {
     const client_id = clientId;
-    const client_secret = ""; // Assuming client secret is being passed as prop or retrieved from secure storage
     const redirect_uri = redirectUri || window.location.href;
 
     return fetch(
-      `https://corsanywhere.herokuapp.com/https://accounts.crowdin.com/oauth/token`,
+      `https://cors-anywhere.herokuapp.com/https://accounts.crowdin.com/oauth/token`,
       {
         method: "POST",
         headers: {
@@ -70,18 +69,19 @@ const CrowdinLoginComponent: React.FC<CrowdinLoginProps> = ({
         },
         body: JSON.stringify({
           client_id,
-          client_secret,
           redirect_uri,
           grant_type: "authorization_code",
           code,
+          code_verifier: codeVerifier,
         }),
       }
     );
-  }, [clientId, redirectUri]);
+  }, [clientId, redirectUri, codeVerifier]);
 
-  const handleLoginClick = () => {
+  const handleLoginClick = async () => {
+    const url = await buildCodeRequestURL();
     const newPopup = openWindow({
-      url: buildCodeRequestURL(),
+      url,
       name: "Log in with Crowdin",
     });
 

@@ -51,7 +51,6 @@ Follow these steps to start using React Crowdin Login:
         <CrowdinLogin
           authCallback={authHandler}
           clientId={CLIENT_ID}
-          clientSecret={CLIENT_SECRET}
           redirectUri={REDIRECT_URI}
           scope={SCOPE}
         />
@@ -67,7 +66,6 @@ Follow these steps to start using React Crowdin Login:
 |--------------|------------------------------------------------------------|-----------|--------------------------------------------------------------------------------------------------------------------------------------------------|
 | authCallback | function                                                   | required  | Callback function which takes two arguments `(error, authData)`                                                                                  |
 | clientId     | string                                                     | required  | Client ID of your OAuth App                                                                                                                      |
-| clientSecret | string                                                     | required  | Client Secret of your OAuth App                                                                                                                  |
 | redirectUri  | string                                                     | required  | Authorization callback URL of your OAuth App                                                                                                     |
 | scope        | string                                                     | required  | Scope that will be requested. [Understanding Scopes for OAuth Apps](https://support.crowdin.com/enterprise/understanding-scopes-for-oauth-apps/) |
 | buttonTheme  | enum: `"light"`, `"light_short"`, `"dark"`, `"dark_short"` | `"light"` | Button style theme, that based on [Login Branding Guidelines](https://github.com/crowdin/react-crowdin-login/wiki/Login-Branding-Guidelines)     |

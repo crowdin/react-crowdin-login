@@ -13,11 +13,10 @@ import config from "./config";
 import { CrowdinLogin } from "@crowdin/react-crowdin-login";
 
 const ExamplePage = () => {
-  const { clientId, clientSecret, customClassName, scopes, themeOptions } = config;
+  const { clientId, customClassName, scopes, themeOptions } = config;
 
   const [state, setState] = useState({
     clientId,
-    clientSecret,
     customClassName,
     redirectUri: window.location.href,
     scope: [scopes[0].value],
@@ -35,7 +34,7 @@ const ExamplePage = () => {
     console.log(err, data);
   };
 
-  const { clientId: clientIdState, clientSecret: clientSecretState, scope, buttonTheme, customClassName: customClassNameState, redirectUri } = state;
+  const { clientId: clientIdState, scope, buttonTheme, customClassName: customClassNameState, redirectUri } = state;
 
   return (
     <div className="viewport">
@@ -73,16 +72,8 @@ const ExamplePage = () => {
                 <label>Client ID</label>
                 <input
                   onChange={e => handleChange(e.target.value, "clientId")}
-                  placeholder={config.clientId}
+                  placeholder="Your Client ID"
                   value={clientIdState}
-                />
-              </Form.Field>
-              <Form.Field>
-                <label>Client Secret</label>
-                <input
-                  onChange={e => handleChange(e.target.value, "clientSecret")}
-                  placeholder={config.clientSecret}
-                  value={clientSecretState}
                 />
               </Form.Field>
               <Form.Field>
@@ -131,7 +122,6 @@ const ExamplePage = () => {
           <Segment>
             <CrowdinLogin
               clientId={clientIdState}
-              clientSecret={clientSecretState}
               authCallback={loginHandler}
               buttonTheme={buttonTheme}
               className={customClassNameState}

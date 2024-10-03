@@ -9,11 +9,6 @@ interface CrowdinLoginProps {
   clientId: string;
 
   /**
-   * Application (client) ID
-   */
-  clientSecret: string;
-
-  /**
    * Callback function which takes two arguments (error, authData)
    */
   authCallback: (error?: any, result?: any) => void;
